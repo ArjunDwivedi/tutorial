@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Page</title>
+    <style>
+        .stars {
+            display: inline-block;
+            font-size: 24px;
+        }
+        .stars input[type="radio"] {
+            display: none;
+        }
+        .stars label {
+            cursor: pointer;
+            padding: 5px;
+        }
+        .stars label:before {
+            content: "\2605";
+            color: #ccc;
+        }
+        .stars input[type="radio"]:checked ~ label:before {
+            color: #f90;
+        }
+    </style>
+</head>
+<body>
+    <h1>Overall Rating</h1>
+    <div class="stars">
+        <input type="radio" id="star5" name="rating" value="5"><label for="star5"></label>
+        <input type="radio" id="star4" name="rating" value="4"><label for="star4"></label>
+        <input type="radio" id="star3" name="rating" value="3"><label for="star3"></label>
+        <input type="radio" id="star2" name="rating" value="2"><label for="star2"></label>
+        <input type="radio" id="star1" name="rating" value="1"><label for="star1"></label>
+    </div>
+    
+    <h1>Feedback Form</h1>
+    <form id="feedbackForm" action="/submit_feedback" method="post">
+        <label for="name">Your Name:</label><br>
+        <input type="text" id="username" name="name"><br> <!-- changed id to username -->
+        <label for="feedback">Your Feedback:</label><br>
+        <textarea id="feedback" name="feedback" rows="4" cols="50"></textarea><br>
+        <label for="rating">Rating:</label>
+        <input type="number" id="rating" name="rating" min="1" max="5"><br>
+        <input type="submit" value="Submit">
+    </form>
+    
+    <h1>All Feedbacks</h1>
+    <div id="all-feedbacks">
+        <!-- This is where all the feedbacks will be displayed -->
+        <p>No feedback yet.</p>
+    </div>
+
+    <!-- Linking the JavaScript file -->
+    <script src="feedback.js"></script>
+</body>
+</html>
